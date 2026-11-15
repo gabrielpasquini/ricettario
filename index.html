@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ricettario</title>
+<style>
+  :root { --line:#3f8f3f; --ink:#1f2a1f; --muted:#5b665b; --bg:#fbfcf8; --head:#eef5ea; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px 14px 40px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:700px; margin:0 auto; }
+  h1 { font-size:1.6rem; margin:0 0 4px; }
+  .meta { color:var(--muted); font-size:.92rem; margin:0 0 18px; }
+  input { width:100%; padding:10px 12px; font-size:1rem; border:2px solid var(--line); border-radius:6px; margin-bottom:16px; background:#fff; color:var(--ink); }
+  h2 { font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:22px 0 8px; }
+  ul { list-style:none; margin:0; padding:0; border:2px solid var(--line); border-radius:6px; background:#fff; overflow:hidden; }
+  li + li { border-top:1.5px solid var(--line); }
+  a { display:block; padding:12px 14px; color:var(--ink); text-decoration:none; }
+  a:hover, a:active { background:var(--head); }
+  a small { display:block; color:var(--muted); margin-top:2px; }
+  .none { color:var(--muted); font-style:italic; display:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ricettario</h1>
+  <p class="meta">Le mie ricette, in formato tabellare</p>
+  <input id="q" type="search" placeholder="Cerca una ricetta…" autocomplete="off">
+
+  <section>
+    <h2>Biscotti</h2>
+    <ul>
+      <li><a href="biscotti-burro-nocciola-cioccolato.html">Biscotti chewy al burro nocciola e cioccolato fondente<small>18 biscotti · da iniziare il giorno prima</small></a></li>
+      <li><a href="biscotti-morbidi-zucchero-di-canna.html">Biscotti morbidi allo zucchero di canna<small>20–24 biscotti · 15 min + 3 h di frigo</small></a></li>
+    </ul>
+  </section>
+  <p class="none" id="none">Nessuna ricetta trovata.</p>
+</div>
+<script>
+  const q = document.getElementById('q');
+  q.addEventListener('input', () => {
+    const t = q.value.trim().toLowerCase();
+    let any = false;
+    document.querySelectorAll('section').forEach(s => {
+      let vis = 0;
+      s.querySelectorAll('li').forEach(li => {
+        const ok = li.textContent.toLowerCase().includes(t);
+        li.style.display = ok ? '' : 'none';
+        if (ok) vis++;
+      });
+      s.style.display = vis ? '' : 'none';
+      if (vis) any = true;
+    });
+    document.getElementById('none').style.display = any ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>
