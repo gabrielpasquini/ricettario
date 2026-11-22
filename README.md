@@ -13,14 +13,20 @@ Ricette in formato **tabella**: ingredienti a sinistra, azioni a destra, si legg
 | `*.html` | Una pagina per ricetta |
 | `style.css` | Stile comune a tutte le pagine |
 | `scala.js` | Selettore delle dosi (×½, ×1, ×1,5, ×2, ×3) |
+| `verifica.py` | Controllo automatico delle pagine |
+| `CLAUDE.md` | Istruzioni per l'AI che aggiunge le ricette |
 
 ## Aggiungere una ricetta
 
-1. Copia una ricetta esistente e rinominala (`nome-ricetta.html`).
-2. Tieni `<link rel="stylesheet" href="style.css">` nell'`<head>` e `<script src="scala.js"></script>` prima di `</body>`.
-3. Se la tabella è molto larga, aggiungi solo l'override nella pagina, per esempio `<style>table.ric{min-width:1200px}</style>`.
-4. Nella colonna ingredienti metti la dose in `<span class="q">`: è quella che il selettore ricalcola. Per altri numeri da ricalcolare usa `class="sc"`.
-5. Aggiungi il link in `index.html`.
+Basta dare a un'AI (Claude Code) il **link della ricetta**: segue le istruzioni di [`CLAUDE.md`](CLAUDE.md), crea la pagina, la collega in `index.html` e controlla la tabella con `verifica.py`.
+
+Per controllare a mano tutte le pagine:
+
+```
+python3 verifica.py
+```
+
+Segnala tabelle rotte (celle sovrapposte o mancanti, `rowspan` sbagliati), pagine senza fonte, senza stile o non collegate nell'indice.
 
 ## Convenzioni
 
