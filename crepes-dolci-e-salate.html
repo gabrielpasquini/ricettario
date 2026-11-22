@@ -4,117 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crepes dolci e salate (impasto base)</title>
+<link rel="stylesheet" href="style.css">
 <style>
-:root{
-  --ink:#2b2622; --muted:#6f655c; --bg:#fffaf3; --line:#a39383; --card:#fff; --soft:#f3ece2;
-  --blu:#2f6fb0;   --blu-bg:#e2eefb;
-  --rosso:#c8492f; --rosso-bg:#fde5de;
-  --verde:#2f8a4a; --verde-bg:#e0f2e4;
-  --giallo:#c08400;--giallo-bg:#fff0c4;
-  --viola:#7b55c7; --viola-bg:#ece3fb;
-  --grigio:#7a6f66;--grigio-bg:#f0ebe5;
-}
-*{box-sizing:border-box}
-body{margin:0;padding:16px 12px 48px;background:var(--bg);color:var(--ink);
-     font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
-.wrap{max-width:1150px;margin:0 auto}
-nav.top{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-nav.top a{font-size:.9rem;text-decoration:none;color:var(--ink);background:#fff;border:2px solid #e6d9c8;border-radius:999px;padding:5px 12px}
-nav.top a:hover{background:var(--soft)}
-h1{font-size:1.6rem;margin:0 0 8px;line-height:1.2}
-h2{font-size:1.2rem;margin:30px 0 10px}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px}
-.badge{background:#fff;border:2px solid #e6d9c8;border-radius:999px;padding:4px 11px;font-weight:600;font-size:.88rem}
-.fonte{color:var(--muted);font-size:.85rem;margin:6px 0 16px}
-.fonte a{color:var(--blu)}
-
-/* legenda colori */
-.legenda{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;background:#fff;border:2px solid #e6d9c8;border-radius:12px;padding:9px 12px;margin:0 0 12px;font-size:.88rem}
-.legenda b{margin-right:2px}
-.lg{display:inline-flex;align-items:center;gap:6px}
-.lg i{display:inline-block;width:18px;height:18px;border-radius:5px;border:2px solid}
-.lg.c-blu i{background:var(--blu-bg);border-color:var(--blu)}
-.lg.c-rosso i{background:var(--rosso-bg);border-color:var(--rosso)}
-.lg.c-verde i{background:var(--verde-bg);border-color:var(--verde)}
-.lg.c-giallo i{background:var(--giallo-bg);border-color:var(--giallo)}
-.lg.c-viola i{background:var(--viola-bg);border-color:var(--viola)}
-.lg.c-grigio i{background:var(--grigio-bg);border-color:var(--grigio)}
-.lg-help{margin-left:auto;font-size:.82rem}
-.lg-help a{color:var(--blu)}
-
-/* passo 0 */
-.prima{background:var(--grigio-bg);border-left:7px solid var(--grigio);border-radius:10px;padding:10px 14px;margin:0 0 14px}
-.prima h3{margin:0 0 4px;font-size:1rem}
-.prima ul{margin:0;padding-left:0;list-style:none}
-.prima li{margin:4px 0;padding-left:26px;position:relative}
-.prima li::before{content:"☐";position:absolute;left:2px;top:-1px;font-size:1.05rem}
-
-/* tabella */
-.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:2px solid var(--line);border-radius:10px;background:#fff}
-table.ric{border-collapse:collapse;font-size:13.5px;line-height:1.3;width:100%}
-table.ric td, table.ric th{border:1.5px solid var(--line);padding:7px 8px;vertical-align:middle}
-table.ric th{background:var(--ink);color:#fff;font-weight:700;font-size:1rem;text-align:center;padding:6px 4px}
-table.ric th small{display:block;font-weight:400;font-size:.72rem;opacity:.8}
-table.ric th.ing-h{text-align:left;position:sticky;left:0;z-index:3;font-size:.9rem}
-td.ing{text-align:left;min-width:180px;max-width:240px;position:sticky;left:0;z-index:2;background:#fff;box-shadow:2px 0 0 var(--line)}
-td.ing .q{display:block;font-weight:800}
-td.ing small{display:block;color:var(--muted);font-size:.78rem;margin-top:1px}
-td.act{text-align:center;min-width:104px}
-td.act .ico{display:block;font-size:1.35rem;line-height:1.2}
-td.act b{display:block;font-size:.95rem;margin-bottom:2px}
-td.act .nota{display:block;color:var(--muted);font-size:.78rem;margin-top:3px}
-td.empty{background:#fff}
-td.c-blu{background:var(--blu-bg)} td.c-rosso{background:var(--rosso-bg)} td.c-verde{background:var(--verde-bg)}
-td.c-giallo{background:var(--giallo-bg)} td.c-viola{background:var(--viola-bg)} td.c-grigio{background:var(--grigio-bg)}
-td.ing.c-blu{border-left:7px solid var(--blu)} td.ing.c-rosso{border-left:7px solid var(--rosso)}
-td.ing.c-verde{border-left:7px solid var(--verde)} td.ing.c-giallo{border-left:7px solid var(--giallo)}
-td.act.c-blu{box-shadow:inset 0 5px 0 var(--blu)} td.act.c-rosso{box-shadow:inset 0 5px 0 var(--rosso)}
-td.act.c-verde{box-shadow:inset 0 5px 0 var(--verde)} td.act.c-giallo{box-shadow:inset 0 5px 0 var(--giallo)}
-td.act.c-viola{box-shadow:inset 0 5px 0 var(--viola)} td.act.c-grigio{box-shadow:inset 0 5px 0 var(--grigio)}
-
-/* etichette */
-.chip{display:inline-block;margin:4px 2px 0;font-size:.76rem;font-weight:700;border-radius:6px;padding:2px 6px;line-height:1.25}
-.chip.t{color:#1d4b84;background:#d8e8fb}
-.chip.temp{color:#963a0b;background:#ffdfc8}
-.chip.warn{color:#9e150b;background:#ffdcd7}
-.chip.ok{display:block;color:#1c6431;background:#d9f0de;font-weight:600;text-align:left}
-.hint{font-size:.82rem;color:var(--muted);margin:6px 2px 0}
-
-/* procedimento */
-ol.passi{list-style:none;margin:0;padding:0}
-li.passo{background:#fff;border:2px solid #e6d9c8;border-left-width:8px;border-radius:10px;padding:10px 14px 10px 12px;margin:0 0 10px;display:grid;grid-template-columns:38px 1fr;gap:10px}
-li.passo .n{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:var(--grigio)}
-li.passo h3{margin:4px 0 4px;font-size:1rem}
-li.passo p{margin:4px 0}
-li.passo .sub{border-left:5px solid;padding:2px 0 2px 10px;margin:8px 0}
-li.passo .perche{color:var(--muted);font-size:.9rem}
-li.passo.c-blu{border-left-color:var(--blu)}     li.passo.c-blu .n{background:var(--blu)}
-li.passo.c-rosso{border-left-color:var(--rosso)} li.passo.c-rosso .n{background:var(--rosso)}
-li.passo.c-verde{border-left-color:var(--verde)} li.passo.c-verde .n{background:var(--verde)}
-li.passo.c-giallo{border-left-color:var(--giallo)} li.passo.c-giallo .n{background:var(--giallo)}
-li.passo.c-viola{border-left-color:var(--viola)} li.passo.c-viola .n{background:var(--viola)}
-li.passo.c-grigio{border-left-color:var(--grigio)} li.passo.c-grigio .n{background:var(--grigio)}
-.sub.c-blu{border-color:var(--blu)} .sub.c-rosso{border-color:var(--rosso)} .sub.c-verde{border-color:var(--verde)}
-.sub.c-giallo{border-color:var(--giallo)} .sub.c-viola{border-color:var(--viola)} .sub.c-grigio{border-color:var(--grigio)}
-.tag{display:inline-block;font-size:.75rem;font-weight:700;border-radius:5px;padding:1px 6px;margin-right:4px;color:#fff;vertical-align:1px}
-.tag.c-blu{background:var(--blu)} .tag.c-rosso{background:var(--rosso)} .tag.c-verde{background:var(--verde)}
-.tag.c-giallo{background:var(--giallo)} .tag.c-viola{background:var(--viola)} .tag.c-grigio{background:var(--grigio)}
-
-ul.note{margin:0;padding-left:20px}
-ul.note li{margin-bottom:6px}
-
-@media (max-width:600px){ h1{font-size:1.35rem} li.passo{grid-template-columns:30px 1fr;padding:10px} li.passo .n{width:28px;height:28px;font-size:.9rem} }
-@media print{
-  body{background:#fff;padding:0} nav.top,.hint,.lg-help{display:none}
-  .scroll{overflow:visible;border:none} td.ing,th.ing-h{position:static;box-shadow:none}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  li.passo{break-inside:avoid}
-}
-
 table.ric{min-width:920px}
-@media (min-width:1000px){.hint{display:none}}
-
-
 </style>
 </head>
 <body>
@@ -159,5 +51,6 @@ table.ric{min-width:920px}
   <h2>Note</h2>
   <ul class="note"><li><b>Dolci o salate:</b> l'impasto non ha né sale né zucchero, quindi va bene per entrambe; per le salate si può aggiungere un pizzico di sale. Senza zucchero restano chiare invece di dorarsi molto.</li><li><b>Pastella:</b> si conserva coperta in frigo fino a 12 h; il riposo ne migliora il sapore.</li><li><b>Conservazione:</b> crepes cotte, coperte con pellicola, in frigo per un paio di giorni.</li><li><b>Congelamento:</b> falle raffreddare, impilale con carta forno tra una e l'altra e avvolgi in pellicola; scongela prima di farcire.</li></ul>
 </div>
+<script src="scala.js"></script>
 </body>
 </html>
